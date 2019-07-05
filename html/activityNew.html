@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户列表</title>
+	<link rel="stylesheet" href="../css/cola.css"/>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/bootstrap-table.css">
+	  <link rel="stylesheet" type="text/css" href="../css/acticity.css" />
+	<!-- <link rel="stylesheet" href="../css/usertatement.css"> -->
+	<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap-table.js"></script>
+	<script src="../js/bootstrap-table-zh-CN.js"></script>
+	<script src="../js/3rd.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+        document.write("<scr"+"ipt src=\"../js/cola.js\"></sc"+"ript>");
+	</script>
+	<script src="../js/activityNew.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		.input_class{
+			width:250px;
+			padding: 5px 0;
+		}
+		.se_class{
+			margin: 0 10px;
+			width:250px;
+			padding: 5px 0;
+		}
+		.sousde{
+			margin: 0 10px;
+			width: 100px;
+			padding: 5px 0;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="top">
+		<img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png"/>
+		<div class="userName" onClick="userName()">
+			<p class="userNames"></p>
+			<img class="iconss" src="../images/sj.png"/>
+		</div>
+
+	</div>
+	<div class="seleName">
+		<p class="userNames"></p>
+		<p onclick="closes()">注销</p>
+	</div>
+	<div class="center">
+		<div class="right">
+			<div class="name">
+				列表详情
+			</div>
+			<div class="tab">
+				<div class="date" style="margin-top: 20px;display: flex;line-height: 30px">
+					 <input type="text" class="input_class" id="text_ID">
+					<select name="myselect" id="myselect" class="se_class">
+						  <option value="Y">参与用户</option>
+						  <option value="N">活动注册用户</option>
+						</select>
+					  <button class="sousde" id="eachFu">搜索</button>
+				</div>
+				<table id="ArbetTable"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script>
+	var userName = sessionStorage.getItem("userNames");
+	$(".userNames").html(userName);
+</script>
+<script src="../js/navs.js"></script>
+<script src="../laydate/laydate.js"></script>
+<script src="../layui/layui.all.js"></script>
+
+</html>

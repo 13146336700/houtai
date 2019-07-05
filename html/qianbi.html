@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PNMI钱币大盘指数</title>
+    <link rel="stylesheet" type="text/css" href="../css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="../css/cola.css" />
+    <link rel="stylesheet" type="text/css" href="../css/qianbi.css"/>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/3rd.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/semantic.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/cola.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="../js/qianbi.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="box" style="height: 135%;">
+    <div class="top">
+        <img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png"/>
+        <div class="userName" onClick="userName()">
+            <p class="userNames" c-bind="usernames"></p>
+            <img class="iconss" src="../images/sj.png"/>
+        </div>
+
+    </div>
+    <div class="seleName">
+        <p class="userNames" c-bind="usernames"></p>
+        <p onclick="closes()">注销</p>
+    </div>
+    <div class="center">
+        <div class="right">
+            <div class="name">
+                PNMI钱币大盘指数
+            </div>
+            <div class="content">
+                <p style="font-size: 24px; font-weight: bolder;padding-bottom: 20px;">钱币大盘指数</p>
+                <c-button click="butcolor" class="basic jr" style="margin-left: 35px;box-shadow: none;">天</c-button>
+                <c-button click="butcolor1" class="basic bz" style="box-shadow: none;">周</c-button>
+                <c-button click="butcolor2" class="basic by" style="box-shadow: none;">月</c-button>
+                <input type="text" class="layui-input" id="test1"> -
+                <input type="text" class="layui-input" id="test2">
+                <c-button click="searchs" style="margin-left: 20px;" class="primary">查找</c-button>
+                <div class="line-img">
+                    <div style="position: relative">
+                        <p style="position: absolute;left: 620px;top: 30px;color:#FFFFFF;z-index: 999;font-size: 12px;">PNMI指数 邮宝出品</p>
+                        <div id="line" style="width: 700px;height:250px;margin-top: 25px;margin-left: 30px;"></div>
+                        <div class="app">更多精准实时价格行情，请登录邮宝APP查询</div>
+                    </div>
+                    <div class="qrcode">
+                        <div class="qrcode-img">
+                            <img width="100%" height="100%" class="imge"/>
+                        </div>
+                        <div class="qrcode-text">
+                            <p>长按识别二维码</p>
+                            <p>立即下载邮宝APP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+</body>
+<script src="../js/navs.js"></script>
+<script src="../laydate/laydate.js"></script>
+<script src="../layui/layui.all.js"></script>
+</html>

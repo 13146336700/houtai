@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增商品</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/lauui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css" href="../css/pubList.css"/>
+    <script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/md5.js"></script>
+    <script src="../js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap-table.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap-table-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .r-content {
+            margin-left: 25%;
+            width: 50%;
+        }
+
+        .r-content > div > label {
+            width: 10%;
+            line-height: 50px;
+        }
+
+        .r-content > div {
+            height: 50px;
+        }
+
+        .r-content > div > input {
+            margin-top: 10px;
+            height: 30px;
+        }
+
+        .list {
+            position: absolute;
+            left: 10%;
+            top: 40px;
+            margin-left: -5px;
+            width: 90%;
+            border: 1px solid #ccc;
+            background: #fff;
+            z-index: 9999;
+        }
+
+        .list > p {
+            height: 30px;
+            border-bottom: 1px solid #CCCCCC;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .list > p:hover {
+            background: #1AA094;
+        }
+
+        .lists {
+            display: flex;
+            justify-content: space-around;
+            height: 30px;
+            border-bottom: 1px solid #CCCCCC;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .lists:hover {
+            background: #1AA094;
+        }
+
+        label {
+            width: 100px !important;
+        }
+
+        .layui-input-block > .input {
+            width: 300px;
+        }
+
+        .layui-input-block > div:nth-of-type(1) {
+            /*margin-left: -50px;*/
+        }
+
+        /*//图片上传样式*/
+
+        .navbar {
+            background-color: #fff;
+        }
+
+        /*.mainContainer {*/
+
+        /*position: relative;*/
+
+        /*top: 52px;*/
+
+        /*}*/
+
+        .mainContainer .row .tip li {
+            list-style: none;
+        }
+
+        .mainContainer .nav-box ul li a {
+            color: #777;
+        }
+
+        #box,
+        #box2 {
+            margin-top: 20px;
+            height: 46px;
+        }
+
+        .fragment-group {
+            overflow: hidden;
+            padding-left: 0;
+        }
+
+        .hide {
+            visibility: hidden;
+        }
+
+        .fragment-group .fragment {
+            float: left;
+            width: 30%;
+            padding-right: 10px;
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .file-input {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 130px;
+            height: 46px;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .mainContainer .select-button {
+            position: absolute;
+            background-color: #00b7ee;
+            color: #fff;
+            font-size: 18px;
+            padding: 0 30px;
+            line-height: 44px;
+            font-weight: 100;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .speed {
+            margin-top: 15px;
+        }
+
+        .control-upload {
+            line-height: 14px;
+            margin-left: 10px;
+        }
+
+        .control-container {
+            float: left;
+            width: 20%;
+        }
+
+        #totalBar {
+            margin-bottom: 40px;
+            float: left;
+            width: 80%;
+            height: 30px;
+            border: 1px solid;
+            border-radius: 3px;
+        }
+
+        .linkWrapper img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .buttonList a {
+            padding: 5px 10px;
+            background: #fff;
+            border-radius: 5px;
+            color: #000;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .buttonList ul {
+            text-align: left;
+        }
+
+        .buttonList li {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .disabled {
+            background: #ccc;
+        }
+
+        .display a {
+            display: block;
+            background: #fff;
+        }
+
+        #imgContainer img {
+            display: none;
+        }
+
+        #updialog tr {
+            background-color: #805b5b !important;
+        }
+
+        #updialog tr td:nth-of-type(2) {
+            display: none !important;
+        }
+
+        #totalBar {
+            display: none !important;
+        }
+
+        #updialog tr td:nth-of-type(3) .resume {
+            display: none !important;
+        }
+
+        .fsUploadProgress {
+            position: relative;
+        }
+
+        .closeBtn {
+            width: 20px;
+            position: absolute;
+            height: 20px;
+            background: #f5deb3;
+            right: 20px;
+            top: 14%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .imgb,
+        .imageb {
+            width: 200px;
+            height: 150px;
+            padding: 1px;
+            margin-left: 10px;
+            display: flex;
+        }
+        .imgbs,
+        .imagebs {
+            width: 200px;
+            height: 150px;
+            padding: 1px;
+            margin-left: 10px;
+            display: flex;
+        }
+        .imgb > img,.imgbs > img  {
+            width: 80%;
+            height: 100%;
+        }
+
+        .drop-left,
+        .drop-right {
+            width: 50px;
+            height: 150px;
+            float: left;
+        }
+        .drop-lefts,
+        .drop-rights {
+            width: 50px;
+            height: 150px;
+            float: left;
+        }
+        img {
+            cursor: all-scroll;
+        }
+
+        .circulation {
+            height: 100px;
+            padding: 6px 10px;
+            width: 40% !important;
+            resize: vertical;
+            max-height: 200px;
+        }
+    </style>
+</head>
+
+<body style="position: relative">
+<div class="box">
+    <div class="top">
+        <img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png"/>
+        <div class="userName" onClick="userName()">
+            <p class="userNames" c-bind="usernames"></p>
+            <img class="iconss" src="../images/sj.png"/>
+        </div>
+
+    </div>
+    <div class="seleName">
+        <p class="userNames" c-bind="usernames"></p>
+        <p onclick="closes()">注销</p>
+    </div>
+    <div class="center">
+        <div class="right">
+            <div class="name">
+                特邀商家新增商品
+            </div>
+            <div class="content">
+                <div class="r-content">
+                    <div style="display: flex;position: relative">
+                        <label for="name">藏品名称:</label>
+                        <input type="text" class="layui-input" id="name">
+                        <div class="list">
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                        <label for="type">藏品分类:</label>
+                        <!--<input type="text" class="layui-input" id="type">-->
+                        <form class="layui-form" action="" style="display: inline-block;width: 100%;margin-top: 10px;">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <select id="type" name="modules" lay-filter="type" lay-verify="required">
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="display: flex">
+                        <label for="pinxiang">藏品品相:</label>
+                        <!--<input type="text" class="layui-input" id="pinxiang">-->
+                        <form class="layui-form" action="" style="display: inline-block;width: 100%;margin-top: 10px;">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <select id="pinxiang" name="modules" lay-verify="required">
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="display: flex">
+                        <label for="danwei">交易单位:</label>
+                        <!--<input type="text" class="layui-input" id="danwei">-->
+                        <form class="layui-form" action="" style="display: inline-block;width: 100%;margin-top: 10px;">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <select id="danwei" name="modules" lay-verify="required">
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="display: flex">
+                        <label for="num">交易数量:</label>
+                        <input type="text" class="layui-input" placeholder="请输入大于0的整数" id="num">
+                    </div>
+                    <div style="display: flex">
+                        <label for="price">交易单价:</label>
+                        <input type="text" class="layui-input" id="price">
+                    </div>
+                    <div style="display: flex">
+                        <label for="price">交割方式:</label>
+                        <form class="layui-form" action="" style="display: inline-block;width: 100%;margin-top: 10px;">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <select id="searchType" name="modules" lay-verify="required">
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="display: flex">
+                        <label for="mixNum">最小数量:</label>
+                        <input type="text" class="layui-input" placeholder="请输入大于0的整数" id="mixNum">
+                    </div>
+                    <div style="display: flex">
+                        <label for="dataw">有效期:</label>
+                        <input type="text" class="layui-input" placeholder="最长30天" id="dataw">
+                    </div>
+                    <!--<div style="display: flex">-->
+                        <!--<form class="layui-form" action="">-->
+                            <!--<div class="layui-form-item">-->
+                                <!--<label class="layui-form-label" style="font-weight: bold;">交易方式:</label>-->
+                                <!--<div class="layui-input-block">-->
+                                    <!--<input type="checkbox" lay-filter="filter" name="2" lay-skin="primary" title="担保交易">-->
+                                    <!--<input type="checkbox" lay-filter="filter" name="3" lay-skin="primary" title="线下交易">-->
+                                    <!--<input type="checkbox" lay-filter="filter" name="4" lay-skin="primary"-->
+                                           <!--title="代理人交易">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                    <div style="display: flex">
+                        <label for="desc">藏品描述:</label>
+                        <textarea name="" style="margin-bottom: 20px;" placeholder="输入对藏品的描述(100字以内)"
+                                  class="layui-textarea" id="desc" cols="30"
+                                  rows="10"></textarea>
+                    </div>
+
+                    <div style="margin-top: 60px;height: auto;">
+                        <div style="display: flex;margin-top: 15px;" class="flex">
+                            <label style="width: 60%" for="updata">上传商品图片:</label>
+                            <input type="file" accept="application" class="ab upfile" name="" id="updata" value="">
+                        </div>
+                        <div class="imgs" style="display: flex;flex-wrap: wrap;">
+
+                        </div>
+                    </div>
+                    <div style="margin-top: 60px;height: auto;">
+                        <div style="display: flex;margin-top: 15px;" class="flex">
+                            <label style="width: 60%" for="updatas">上传详情图片:</label>
+                            <input type="file" accept="application" class="ab upfile" name="" id="updatas" value="">
+                        </div>
+                        <div class="imgss" style="display: flex;flex-wrap: wrap;">
+
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                        <input type="button" onclick="putGoods()" style="margin: 100px auto;" class="layui-btn"  value="确认发布">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../layui/layui.js"></script>
+<script src="../layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/qiniu.js"></script>
+<script src="../js/newGoods.js"></script>
+<script src="../js/navs.js"></script>
+
+</html>

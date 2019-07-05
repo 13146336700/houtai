@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户列表</title>
+	<link rel="stylesheet" href="../css/cola.css"/>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/bootstrap-table.css">
+	<link rel="stylesheet" href="../css/usertatement.css">
+	<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap-table.js"></script>
+	<!-- <script src="../js/bootstrap-table-zh-CN.js"></script> -->
+	<script src="../js/3rd.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+        document.write("<scr"+"ipt src=\"../js/cola.js\"></sc"+"ript>");
+	</script>
+	<script src="../js/usertatement.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="box">
+	<div class="top">
+		<img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png"/>
+		<div class="userName" onClick="userName()">
+			<p class="userNames"></p>
+			<img class="iconss" src="../images/sj.png"/>
+		</div>
+
+	</div>
+	<div class="seleName">
+		<p class="userNames"></p>
+		<p onclick="closes()">注销</p>
+	</div>
+	<div class="center">
+		<div class="right">
+			<div class="name">
+				用户报表
+			</div>
+			<!-- <div class="content">
+				<p style="margin-bottom: 30px;font-size: 16px;font-weight: bold;">总计数据：</p>
+				<c-table bind="employees" sortMode="local" align="center">
+					<column align="center" property="name" caption="渠道"></column>
+					<column align="center" property="count" caption="下载量" ></column>
+					<column align="center" property="register" caption="注册量" ></column>
+					<column align="center" property="registerall" caption="认证总数量" ></column>
+					<column align="center" property="auth" caption="普通会员" ></column>
+					<column align="center" property="silver" caption="银牌会员数" ></column>
+					<column align="center" property="gold" caption="金牌会员数" ></column>
+					<column property="" caption="钻石会员数" ></column>
+				 </c-table> -->
+
+			<!-- </div> -->
+			<div class="tab">
+				<div class="date" style="margin-top: 20px;display: flex;line-height: 30px">
+					<p style="margin-left: 30px;">渠道：</p>
+					<!-- <form class="layui-form" action="" style="display: inline-block;width: 154px;">
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<select id="sele" name="modules" lay-verify="required">
+									<option value="">全部</option>
+								</select>
+							</div>
+						</div>
+					</form> -->
+					<p style="font-size: 16px;font-weight: bold;margin-left: 10px;cursor: pointer" class="weeks"
+					   style="font-size: 15px;font-weight: bold;line-height: 30px;">日期选择：
+						<span style="line-height: 30px;">按天</span>
+						<span style="line-height: 30px;">按周</span>
+						<span style="line-height: 30px;">按月</span>
+					</p>
+					<input style="width: 140px; margin-left: 35px;" type="text" class="layui-input"
+						   id="test1"> -
+					<input style="width: 140px;" type="text" class="layui-input" id="test2">
+					<input style="margin-left: 20px;" class="btn layui-btn layui-btn-normal" type="button" value="筛选"/>
+				</div>
+				<div style="margin-top: 30px;font-size: 16px;font-weight: bold;">新增数据：</div>
+				<table id="ArbetTable"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script>
+	var userName = sessionStorage.getItem("userNames");
+	$(".userNames").html(userName);
+</script>
+<script src="../js/navs.js"></script>
+<script src="../laydate/laydate.js"></script>
+<script src="../layui/layui.all.js"></script>
+
+</html>

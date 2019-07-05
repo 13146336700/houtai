@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+	</head>
+	<style>
+		.qrcode{
+			height: 0.02rem;
+			overflow: hidden;
+		}
+		.qrcode img{
+			display: none !important;
+		}
+	</style>
+	<body>
+		<!-- <input id="text" type="text" value="http://www.runoob.com" style="width:80%" /><br />
+		<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div> -->
+		
+<button onclick="createQrcode()">点我生成网二维码</button>
+<button onclick="downloadQrcode()">点我下载二维码</button>
+<div class="qrcode"></div>
+<div class="qrcode"></div>
+
+	</body>
+	<script>
+		function createQrcode(){
+        var qrcode = new QRCode(document.getElementsByClassName("qrcode")[0], {
+            text: "http://www.youbao360.com/h5/ybact/index.html#/home?inviteCode=&actId=402881366a92785f016a92847dcb0002",  //你想要填写的文本
+            width: 300, //生成的二维码的宽度
+            height: 300, //生成的二维码的高度
+            colorDark : "#000000", // 生成的二维码的深色部分
+            colorLight : "#ffffff", //生成二维码的浅色部分
+            correctLevel : QRCode.CorrectLevel.H
+            // correctLevel : "https://jingyan.baidu.com/article/36d6ed1f2023cc1bcf4883e9.html"
+        });
+		// setTimeout(()=>{
+		// 	downloadQrcode();
+		// },500)
+    }
+	 function downloadQrcode(){
+//         var canvas = document.createElement("canvas");  //创建canvas元素
+//         var qrcode = document.getElementById('qrcode');
+//         var img = qrcode.getElementsByTagName('img')[0]; // 获取到图片元素。
+//          canvas.height = img.height;
+//          canvas.width = img.width;
+//          var ctx = canvas.getContext("2d");  //获取context对象
+//          ctx.drawImage(img,0,0);             //向画布上绘制图像
+//          var link = document.createElement("a"); 
+//          var url = canvas.toDataURL("image/png"); // 将canvas中图片转化为base64码
+//          link.setAttribute("href",url);
+//          link.setAttribute("download",'123.png');
+//          link.click();
+			var qrcode = document.getElementsByClassName('qrcode')[0];
+		        var img = qrcode.getElementsByTagName('img')[0];
+		        var link = document.createElement("a");
+		        var url = img.getAttribute("src");
+		        link.setAttribute("href",url);
+		        link.setAttribute("download",'123.png');
+		        link.click();
+        }
+// 		var qrcode = new QRCode(document.getElementById("qrcode"), {
+// 			width: 100,
+// 			height: 100
+// 		});
+// 
+// 		function makeCode() {
+// 			var elText = document.getElementById("text");
+// 
+// 			if (!elText.value) {
+// 				alert("Input a text");
+// 				elText.focus();
+// 				return;
+// 			}
+// 
+// 			qrcode.makeCode(elText.value);
+// 		}
+// 
+// 		makeCode();
+// 
+// 		$("#text").
+// 		on("blur", function() {
+// 			makeCode();
+// 		}).
+// 		on("keydown", function(e) {
+// 			if (e.keyCode == 13) {
+// 				makeCode();
+// 			}
+// 		});
+	</script>
+</html>

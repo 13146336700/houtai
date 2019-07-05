@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>特邀商家商品列表</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">	
+    <link rel="stylesheet" type="text/css" href="../css/pubList.css" />
+    <script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap-table.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap-table-zh-CN.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/md5.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .pagination-detail {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="position: relative">
+    <div class="box">
+        <div class="top">
+            <img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png" />
+            <div class="userName" onClick="userName()">
+                <p class="userNames" c-bind="usernames"></p>
+                <img class="iconss" src="../images/sj.png" />
+            </div>
+
+        </div>
+        <div class="seleName">
+            <p class="userNames" c-bind="usernames"></p>
+            <p onclick="closes()">注销</p>
+        </div>
+        <div class="center">
+            <div class="right">
+                <div class="name">
+                    特邀商家商品列表
+                </div>
+                <div class="content">
+                    <div class="r-content">
+                        <div>
+                            <label for="">店铺名:</label>
+                            <span class="shopName"></span>
+                        </div>
+                        <div>
+                            <label for="">店铺说明:</label>
+                            <textarea name="" class="layui-textarea shopDesc" placeholder="30字以内" id="" cols="30" rows="5"></textarea>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <input type="button" id="saveShop" value="保存" class="layui-btn">
+                        </div>
+                        <div style="display: flex;margin-top: 20px;">
+                            <input type="button" onclick="newGoods()" style="margin-left: 20px;" class="layui-btn" value="新增商品">
+                        </div>
+                        <table id="ArbetTable"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../laydate/laydate.js"></script>
+<script src="../layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/navs.js"></script>
+<script src="../js/goodsList.js"></script>
+</html>

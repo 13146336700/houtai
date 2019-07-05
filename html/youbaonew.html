@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户列表</title>
+	<link rel="stylesheet" href="../css/cola.css"/>
+	<link rel="stylesheet" href="../layui/css/layui.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/bootstrap-table.css">
+	<!-- <link rel="stylesheet" href="../css/usertatement.css"> -->
+	  <link rel="stylesheet" type="text/css" href="../css/youbaoList.css" />
+	 <script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+	<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap-table.js"></script>
+	<script src="../js/bootstrap-table-zh-CN.js"></script>
+	<script src="../js/3rd.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+        document.write("<scr"+"ipt src=\"../js/cola.js\"></sc"+"ript>");
+	</script>
+	<script src="../js/youbaonew.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		.input_class{
+			width:250px;
+			padding: 5px 0;
+		}
+		.se_class{
+			margin: 0 10px;
+			width:250px;
+			padding: 5px 0;
+		}
+		.sousde{
+			margin: 0 10px;
+			width: 100px;
+			border-radius:3px;
+			border:none;
+			padding: 5px 0;
+		}
+		.houdong{
+			margin: 15px 0;
+			padding: 10px 0;
+		}
+	
+		.tankuang{
+			width: 500px;
+			border: 1px solid #ccc;
+			/* height: 700px; */
+		}
+		.tankuang ul {
+			width: 85%;
+			margin: auto;
+		}
+		.tankuang ul li{
+			margin: 10px 0;
+		}
+		.qrenBut{
+			width: 100%;
+			text-align: center;
+		}
+	 .qrenBut button{
+			margin: 15px 0;
+			padding: 10px;
+		}
+		#test-image-preview,#test-image-preview-beijing{
+			display: flex;
+			width: 50px;
+		}
+		#test-image-preview img{
+			width: 100px;
+			height: 100px;
+			margin: 5px;
+		}
+		#test-image-preview-beijing img{
+			width: 100px;
+			margin: 5px;
+			height: 100px;
+		}
+		.span_class{
+			display: inline-block;
+			width: 120px;
+		}
+		
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="top">
+		<img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png"/>
+		<div class="userName" onClick="userName()">
+			<p class="userNames"></p>
+			<img class="iconss" src="../images/sj.png"/>
+		</div>
+
+	</div>
+	<div class="seleName">
+		<p class="userNames"></p>
+		<p onclick="closes()">注销</p>
+	</div>
+	<div class="center">
+		<div class="right">
+			<div class="name" id="ChangeName">
+				新增活动
+			</div>
+			<div class="tab">	
+				<div class="tankuang" >
+					<ul>
+						<li>
+							<span class="span_class">活动名称：</span>
+							<input type="text" id="name" class="input_class">
+						</li>
+						<li>
+							<span class="span_class">分享内容：</span>
+							<input type="text" id="content" class="input_class">
+						</li>
+						<li>
+							<span class="span_class">合作商家简介：</span>
+							<input type="text" id="content" class="input_class">
+						</li>
+						<li>
+							<span class="span_class">分享链接标题：</span>
+							<input type="text" id="share_title" class="input_class">
+						</li>
+					<!-- 	<li>
+							<span class="span_class">朋友圈分享文字：</span>
+							<input type="text" id="text_friends" class="input_class">
+						</li>
+						<li>
+							<span class="span_class">logo文字上：</span>
+							<input type="text" id="logoTopName" class="input_class">
+						</li>	
+						<li>
+							<span class="span_class">logo文字下：</span>
+							<input type="text" id="logobottonName" class="input_class">
+						</li> -->
+						<li class="hozuo">
+							<span class="span_class">合作商家：</span>
+							  <form class="layui-form" action="" id="formNameS" style="display: inline-block;width: 250px;">
+							    <div class="layui-inline">
+							        <div class="layui-input-inline" style="width: 250px;">
+							            <select id="myselect" name="modules" lay-filter="type" lay-verify="required">
+							            </select>
+							        </div>
+							    </div>
+							</form>
+							<!-- <div id="mingziS"></div> -->
+							<input type="text" id="mingziS" disabled="disabled" class="input_class">
+						</li>
+						<li>
+							<span class="span_class">活动日期：</span>
+						
+							<input type="text" id="test1" class="input_class">
+						</li>
+						<li>
+							<span class="span_class">商家logo：</span> <br/>
+							<!-- <button>选择文件</button> -->
+							<input type="file" id="updata" accept="image/gif, image/jpeg, image/png, image/jpg">
+							 <!-- <p id="test-file-info"></p> -->
+							 <!-- <div id="test-image-preview"></div> -->
+							 <div id="test-image-preview"></div>
+							 <!-- <img src="" alt="" id="test-image-preview"> -->
+						</li>
+						<li>
+							<span class="span_class">活动背景图：</span><br/>
+							<!-- <button>选择文件</button> -->
+							<input type="file" id="test-image-file-beijing" accept="image/gif, image/jpeg, image/png, image/jpg">
+							 <div id="test-image-preview-beijing"></div>
+						</li>
+					</ul>
+					<div class="qrenBut">
+						<button id="addTian">确认添加</button>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script>
+	var userName = sessionStorage.getItem("userNames");
+	$(".userNames").html(userName);
+</script>
+<script src="../js/navs.js"></script>
+<script src="../js/qiniu.js"></script>
+<script src="../laydate/laydate.js"></script>
+<script src="../layui/layui.all.js"></script>
+
+</html>

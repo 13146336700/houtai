@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>图文直播</title>
+		<link rel="stylesheet" href="../css/cola.css" />
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/bootstrap-table.css">
+		<!-- <link rel="stylesheet" type="text/css" href="../css/youbaoList.css" /> -->
+		<link rel="stylesheet" type="text/css" href="../css/Setting.css" />
+		<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/bootstrap.js"></script>
+		<script src="../js/bootstrap-table.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+		<script src="../js/3rd.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			document.write("<scr" + "ipt src=\"../js/cola.js\"></sc" + "ript>");
+		</script>
+		<!-- <script src="../js/youbao.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="../js/Graphic_live.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		.right .main{
+			display: flex;
+			margin-top: 40px;
+			background: #ffffff;
+			padding-bottom: 50px;
+			width: 100%;
+			height: 100%;
+		}
+		.cenLeft{
+			
+			padding: 0px 20px;
+			width: 700px;
+		}
+		.cenRight{
+			flex: 1;
+			padding: 0px 20px;
+		}
+		.awardBox dl{
+			display: inline-block;
+			width: 200px;
+			color: #333333;
+		}
+		.awardBox dl dt{
+			border: 1px solid #666666;
+			height: 50px;
+			line-height: 50px;
+			font-size: 14px;
+			width: 70px;
+			text-align: center;
+			color: #333333;
+		}
+		.awardBox dl .awarding{
+			width: 90px;
+			background-color: #dddddd;
+		}
+		.awardNum input{
+			margin-left: 20px;
+			display: inline-block;
+			width: 120px;
+			height: 40px;
+			text-align: center;
+			height: 40px;
+			background: #ffffff;
+			border: 1px solid #666666;
+		}
+		.awardImgBox{
+			width: 600px;
+			height: 200px;
+			border: 1px solid #dddddd;
+			margin-top: 20px;
+			padding: 20px;
+		}
+		.awardImgBox img{
+			display: block;
+			height: 350px;
+			width: 500px;
+		}
+		.awardImgBox span{
+			font-size: 16px;
+			margin-top: 15px;
+		}
+		.awardNews button{
+			height: 50px;
+			width: 100px;
+			line-height: 50px;
+			text-align: center;
+			margin-top: 20px;
+		}
+		.awardNews button:last-child{
+			float: right;
+			margin-right: 50px;
+		}
+		.newsList li{
+			width: 60%;
+			position: relative;
+		}
+		.newsList title{
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			font-size: 14px;
+		}
+		.newsList p{
+			width: 70%;
+			font-size: 14px;
+		}
+		.changeBox{
+			position: absolute;
+			width: 18%;
+			right: 0px;
+			bottom: 0px;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="top">
+				<img width="240px" height="43px" style="margin: 16px 26px;" src="../images/logo.png" />
+				<div class="userName" onClick="userName()">
+					<p class="userNames"></p>
+					<img class="iconss" src="../images/sj.png" />
+				</div>
+
+			</div>
+			<div class="seleName">
+				<p class="userNames"></p>
+				<p onclick="closes()">注销</p>
+			</div>
+			<div class="center">
+				<div class="right">
+					<div class="name">
+						<!-- 我的直播 -->
+						<div class="list-group" style="display: flex;">
+						<!-- 	<a href="Graphic_live.html" class="list-group-item">图文直播</a>
+							<a href="Data_statistics.html?num=2" class="list-group-item">数据统计</a> -->
+							<a class="a_href list-group-item">图文直播</a>
+							<a class="a_href list-group-item">数据统计</a>
+							
+						</div>
+					</div>
+					
+					<div class="main">
+						<div class="cenLeft">
+							<h3>图文直播</h3>
+							<!-- 奖项说明 -->
+							<div class="awardBox">
+								<dl>
+									<dd>奖项</dd>
+									<!-- <dt id="Award">一等奖</dt> -->
+									<select id="selector" style="height: 50px;width: 100px;">  
+										<option value="1">一等奖</option>
+										<option value="2">二等奖</option>
+										<option value="3">三等奖</option>
+										<!-- <option value="4">纪念奖</option> -->
+									</select>
+								</dl>
+								<!-- <dl>
+									<dd>名额</dd>
+									<dt id="Quota">- -</dt>
+								</dl> -->
+								<dl>
+									<dd></dd>
+									<dt class="awarding">开始抽奖</dt>
+								</dl>
+							</div>
+							<!-- 中奖号码 -->
+							<!-- <div class="awardNum">
+								<label for="">中奖号码</label>
+								<input type="text" name="" id="prize_number" value="" disabled>
+							</div> -->
+							<!-- 抽奖消息 -->
+							<div class="awardNews">
+								<div>
+									<div class="awardImgBox">
+										<!-- <img src="" alt="奖品图片"> -->
+										<span class="awardDes">奖品描述，这是这次的奖品</span>
+										<input type="text" class="form-control" id="concat">
+									</div>
+									<button>添加图片</button>
+									<button id="fasong">发送</button>
+								</div>
+							</div>
+						</div>
+						<div class="cenRight">
+							<h3>发布中</h3>
+							<div class="newsList">
+								<ul id="ul_todolist">
+									<!-- 	<li>
+										<title>2019/05/28 13:25:14</title>
+										<p>感谢各位观看</p>
+										<div class="changeBox">
+											<span class="modificate">修改</span>
+											<span class="delet">删除</span>
+										</div>
+									</li>
+									<li>
+										<title>2019/05/28 13:25:14</title>
+										<p>感谢各位观看，最后希望大家多多支持邮宝哦，查行情，买卖邮币卡都可以上邮宝APP哦。</p>
+										<div class="changeBox">
+											<span class="modificate">修改</span>
+											<span class="delet">删除</span>
+										</div>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="test-image-file" style="display: none;"></div>
+					<div id="test-image-file-beijing" style="display: none;"></div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+	</body>
+	<script>
+		var userName = sessionStorage.getItem("userNames");
+		$(".userNames").html(userName);
+	</script>
+	<script src="../js/navs.js"></script>
+	<script src="../laydate/laydate.js"></script>
+	<script src="../layui/layui.all.js"></script>
+
+</html>
